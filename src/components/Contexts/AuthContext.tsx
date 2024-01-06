@@ -21,13 +21,11 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
 
   const login = (userData: User) => {
-    // Lógica para autenticar o usuário
     setUser(userData);
     console.log(userData);
   };
 
   const logout = () => {
-    // Lógica para fazer logout do usuário
     setUser(null);
   };
 
@@ -42,7 +40,7 @@ export const useAuth = (): AuthContextProps => {
   const context = useContext(AuthContext);
 
   if (!context) {
-    throw new Error('useAuth deve ser usado dentro de um AuthProvider');
+    throw new Error('useAuth fora do Provider');
   }
 
   return context;

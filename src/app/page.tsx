@@ -1,4 +1,5 @@
 'use client'
+import { useEffect } from 'react'
 import { Button } from '@/components/ui/button'
 import { useAuth } from '@/components/Contexts/AuthContext';
 import { useRouter } from 'next/navigation';
@@ -8,12 +9,12 @@ export default function Home() {
   const { user } = useAuth()
   const router = useRouter();
 
-  // Verifica se o usuário está autenticado
-  if (!user) {
-    // Se não estiver autenticado, redireciona para a página de login
-    router.push('/auth/login');
-    return null; // Evita renderizar o conteúdo da Home enquanto redireciona
-  }
+  // useEffect(() => {
+  //   if (!user) {
+  //     router.push('/auth/login');
+  //   }
+  // }, [user, router]);
+
   return (
     <>
       <Header />
