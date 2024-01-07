@@ -9,11 +9,12 @@ import Navbar from './../Navbar/Navbar';
 import SearchInput from '../SearchInput/SearchInput';
 import { useAuth } from '@/components/Contexts/AuthContext';
 import Link from 'next/link';
+import { Button } from '../ui/button';
 
 const Header: React.FC = () => {
   const [isOpen, setOpen] = useState<boolean>(false);
 
-  const { user } = useAuth()
+  const { user, logout } = useAuth()
 
   const cartContext = useContext(CartContext)
 
@@ -40,10 +41,15 @@ const Header: React.FC = () => {
         </div>
         {/* Account and Cart */}
         <div className="flex justify-end items-center">
-          <div className="flex flex-col items-center justify-center pt-5">
+          {/* Account */}
+          <div className="hidden lg:flex flex-col items-center justify-center pt-5">
             <img src="/svg/user.svg" alt="" className='w-6 h-6' />
             {user ? (
-              <Link href="#" className='text-white text-xs'>Minha conta</Link>
+              <div className='text-white text-xs'>
+                <Link href="#" className=' '>{user.username}</Link> 
+                <span> | </span>
+                <Button className='h-0 hover:text-white p-0' variant="ghost" onClick={e => logout()}>sair</Button>
+              </div>
 
             ) : (
               <Link href="/auth/login" className='text-white text-xs'>Entrar</Link>

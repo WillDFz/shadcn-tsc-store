@@ -1,6 +1,7 @@
 'use client'
 import { createContext, useContext, ReactNode, useState } from 'react';
 import User from '@/interfaces/User';
+import { useRouter } from 'next/navigation';
 
 interface AuthContextProps {
   user: User | null;
@@ -16,6 +17,7 @@ interface AuthProviderProps {
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
+  const router = useRouter()
 
   const login = (userData: User) => {
     setUser(userData);
@@ -24,6 +26,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const logout = () => {
     setUser(null);
+    router.push('/auth/login')
   };
 
   return (
