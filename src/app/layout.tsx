@@ -4,6 +4,7 @@ import './globals.css'
 import Header from './../components/Header/Header';
 import { AuthProvider } from './../components/Contexts/AuthContext';
 import { CartProvider } from '@/components/Contexts/CartContext';
+import { Toaster } from '@/components/ui/toaster';
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -22,6 +23,7 @@ export default function RootLayout({
         <AuthProvider>
           <CartProvider>
             {children}
+            <Toaster />
           </CartProvider>
         </AuthProvider>
       </body>

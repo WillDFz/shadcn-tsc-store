@@ -14,14 +14,13 @@ import { Label } from '@/components/ui/label';
 import * as z from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import Image from 'next/image';
 
 
 const formSchema = z.object({
     id: z.number(),
     title: z.string().min(5),
     image: z.string(),
-    price: z.string().min(3),
+    price: z.coerce.number().min(3),
     description: z.string().min(10)
 })
 
@@ -34,7 +33,7 @@ const ProductFormRegister = () => {
             id: 0,
             title: '',
             image: '',
-            price: '',
+            price: 0,
             description: ''
         }
     })
@@ -51,6 +50,7 @@ const ProductFormRegister = () => {
 
     return (
         <div>
+            {/* Form */}
             <div>
                 <Form {...form}>
                     <div className='p-5'>
@@ -63,7 +63,7 @@ const ProductFormRegister = () => {
                                 name="title"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <Label>Nome do produto:</Label>
+                                        <Label>Nome do produto*:</Label>
                                         <FormControl>
                                             <Input placeholder="Ex: Camiseta casual" {...field} />
                                         </FormControl>
@@ -89,7 +89,7 @@ const ProductFormRegister = () => {
                                 name="price"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <Label>Preço:</Label>
+                                        <Label>Preço*:</Label>
                                         <FormControl>
                                             <Input type="number" placeholder="Ex: 10.00" {...field} />
                                         </FormControl>
@@ -102,7 +102,7 @@ const ProductFormRegister = () => {
                                 name="description"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <Label>Descrição:</Label>
+                                        <Label>Descrição*:</Label>
                                         <FormControl>
                                             <Textarea placeholder="" {...field} />
                                         </FormControl>
@@ -115,6 +115,7 @@ const ProductFormRegister = () => {
                     </div>
                 </Form>
             </div>
+            {/* List */}
             <div className='p-5'>
                 {products.length > 0 ? (
                     <>
@@ -122,7 +123,7 @@ const ProductFormRegister = () => {
                             <div key={product.id} className='border-b mb-2'>
                                 <div className='flex'>
                                     <div className='w-1/4 border rounded bg-gray-100 p-3 me-2 mb-2'>
-                                        <img src={product?.image} className='' alt='' />
+                                        <img src={product?.image || 'https://placehold.co/600x600'} className='' alt='' />
                                     </div>
                                     <div>
                                         <p className='font-semibold'>{product.title}</p>
@@ -142,7 +143,6 @@ const ProductFormRegister = () => {
                 ) :
                     <div className="text-xl font-bold text-center">Lista vazia</div>
                 }
-
             </div>
         </div>
     )

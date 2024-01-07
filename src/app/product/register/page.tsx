@@ -1,5 +1,5 @@
 'use client'
-import ProductFormRegister from '@/components/ProductFormRegister/ProductFormRegister'
+import ProductFormRegister from '@/components/Forms/ProductFormRegister/ProductFormRegister'
 import React from 'react'
 import Header from '@/components/Header/Header';
 

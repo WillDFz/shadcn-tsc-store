@@ -37,7 +37,7 @@ const ProductSwiper = () => {
                         <CarouselItem key={product.id} className='basis-3/5'>
                             <div>
                                 <div className='h-48 flex items-center justify-center border rounded bg-gray-100 mb-3'>
-                                    <img src={product.image} className='h-5/6 border' alt="" />
+                                    <img src={product.image} className='h-5/6' alt="" />
                                 </div>
                                 <div className='mb-2'>
                                     <h3 className='text-sm text-yellow-700'>{product.title}</h3>
