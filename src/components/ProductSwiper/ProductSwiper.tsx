@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Product from '@/interfaces/Product'
 import ProductsJson from '@/json/products.json'
 
@@ -10,16 +10,24 @@ import {
     CarouselPrevious,
 } from "@/components/ui/carousel"
 
-import {Button} from '@/components/ui/button'
+import { Button } from '@/components/ui/button'
+import { CartContext } from '../Contexts/CartContext'
 
 const ProductSwiper = () => {
 
     const products: Product[] = ProductsJson;
 
-    if (!products) {
+    const cartContext = useContext(CartContext)
+
+    if (!cartContext) {
         return
     }
 
+    const { addToCart } = cartContext
+
+    if (!products) {
+        return
+    }
 
     return (
         <div className='ps-3 my-8'>
@@ -36,7 +44,14 @@ const ProductSwiper = () => {
                                     <p>R$ {(product.price)}</p>
                                 </div>
                                 <div>
-                                    <Button variant="secondary" className='w-full'>
+                                    <Button onClick={e => addToCart({
+                                        id: product.id,
+                                        title: product.title, price: product.price,
+                                        image: product.image,
+                                        quantity: 1
+                                    })} 
+                                    variant="secondary" 
+                                    className='w-full'>
                                         Adicionar ao carrinho
                                     </Button>
                                 </div>
@@ -45,8 +60,8 @@ const ProductSwiper = () => {
                     ))}
                 </CarouselContent>
                 <div className='hidden lg:block'>
-                <CarouselPrevious />
-                <CarouselNext />
+                    <CarouselPrevious />
+                    <CarouselNext />
                 </div>
             </Carousel>
         </div>

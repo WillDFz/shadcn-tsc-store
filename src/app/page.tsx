@@ -10,6 +10,7 @@ import ProductSwiper from '@/components/ProductSwiper/ProductSwiper';
 import HomeBanner from './../components/HomeBanner/HomeBanner';
 import Newsletter from '@/components/Newsletter/Newsletter';
 import Footer from '@/components/Footer/Footer';
+import { CartProvider } from '@/components/Contexts/CartContext';
 
 export default function Home() {
   const { user } = useAuth()
@@ -23,13 +24,15 @@ export default function Home() {
 
   return (
     <>
-      <Header />
-      <HomeSwiper />
-      <InformativeBanners />
-      <ProductSwiper />
-      <HomeBanner />
-      <Newsletter />
-      <Footer />
+      <CartProvider>
+        <Header />
+        <HomeSwiper />
+        <InformativeBanners />
+        <ProductSwiper />
+        <HomeBanner />
+        <Newsletter />
+        <Footer />
+      </CartProvider>
     </>
   )
 }
