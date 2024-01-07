@@ -22,10 +22,10 @@ const InformativeBanners = () => {
 
     return (
         <div className='bg-gray-100 p-3 mb-2'>
-            <Carousel>
+            <Carousel className="lg:hidden">
                 <CarouselContent>
                     {banners.map((banner, index) => (
-                        <CarouselItem key={index} className='flex basis-2/3 text-'>
+                        <CarouselItem key={index} className='flex basis-2/3 lg:basis-1/4'>
                             <Image src={banner.image} width={24} height={24} className='' alt='' />
                             <div className='ml-3'>
                                 <h3 className='text-sm font-semibold text-yellow-700'>{banner.title}</h3>
@@ -35,6 +35,17 @@ const InformativeBanners = () => {
                     ))}
                 </CarouselContent>
             </Carousel>
+            <div className="hidden lg:flex justify-around">
+                {banners.map((banner, index) => (
+                    <div key={index} className='flex'>
+                        <Image src={banner.image} width={24} height={24} className='' alt='' />
+                        <div className='ml-3'>
+                            <h3 className='text-sm font-semibold text-yellow-700'>{banner.title}</h3>
+                            <p className='text-xs'>{banner.text}</p>
+                        </div>
+                    </div>
+                ))}
+            </div>
         </div>
     )
 }

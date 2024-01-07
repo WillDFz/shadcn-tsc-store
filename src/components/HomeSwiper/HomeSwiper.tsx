@@ -23,9 +23,19 @@ const HomeSwiper = () => {
 
     return (
         <div className='mb-2'>
-            <Carousel>
+            <Carousel className='lg:hidden'>
                 <CarouselContent>
                     {bannersMobile.map((banner) => (
+                        <CarouselItem key={banner.id}>
+                            <img src={banner.image} alt="" />
+                        </CarouselItem>
+
+                    ))}
+                </CarouselContent>
+            </Carousel>
+            <Carousel className='hidden lg:block'>
+                <CarouselContent>
+                    {bannersDesktop.map((banner) => (
                         <CarouselItem key={banner.id}>
                             <img src={banner.image} alt="" />
                         </CarouselItem>

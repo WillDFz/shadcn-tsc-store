@@ -10,6 +10,8 @@ import {
     CarouselPrevious,
 } from "@/components/ui/carousel"
 
+
+
 import { Button } from '@/components/ui/button'
 import { CartContext } from '../Contexts/CartContext'
 
@@ -30,13 +32,13 @@ const ProductSwiper = () => {
     }
 
     return (
-        <div className='ps-3 my-8'>
+        <div className='lg:container ps-3 my-8'>
             <Carousel>
                 <CarouselContent>
                     {products.map((product) => (
-                        <CarouselItem key={product.id} className='basis-3/5'>
+                        <CarouselItem key={product.id} className='basis-3/5 lg:basis-1/3'>
                             <div>
-                                <div className='h-48 flex items-center justify-center border rounded bg-gray-100 mb-3'>
+                                <div className='h-48 lg:h-64 flex items-center justify-center border rounded bg-gray-100 mb-3'>
                                     <img src={product.image} className='h-5/6' alt="" />
                                 </div>
                                 <div className='mb-2'>
@@ -46,13 +48,13 @@ const ProductSwiper = () => {
                                 <div>
                                     <Button onClick={e => addToCart({
                                         id: product.id,
-                                        title: product.title, 
+                                        title: product.title,
                                         price: product.price,
                                         image: product.image,
                                         quantity: 1
-                                    })} 
-                                    variant="secondary" 
-                                    className='w-full'>
+                                    })}
+                                        variant="secondary"
+                                        className='w-full'>
                                         Adicionar ao carrinho
                                     </Button>
                                 </div>
@@ -60,7 +62,7 @@ const ProductSwiper = () => {
                         </CarouselItem>
                     ))}
                 </CarouselContent>
-                <div className='hidden lg:block'>
+                <div className='hidden xl:block'>
                     <CarouselPrevious />
                     <CarouselNext />
                 </div>
