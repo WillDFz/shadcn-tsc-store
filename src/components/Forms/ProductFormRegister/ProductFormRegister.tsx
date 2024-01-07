@@ -14,6 +14,7 @@ import { Label } from '@/components/ui/label';
 import * as z from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
+import Image from 'next/image';
 
 
 const formSchema = z.object({
@@ -44,14 +45,19 @@ const ProductFormRegister = () => {
         setProducts([...products, values])
     }
 
+    const deleteProduct = (id: number) => {
+        const newProducts = products.filter(product => product.id !== id)
+        setProducts(newProducts)
+    }
+
     useEffect(() => {
         console.log(products)
     }, [products])
 
     return (
-        <div>
+        <div className='lg:container lg:flex'>
             {/* Form */}
-            <div>
+            <div className='lg:w-1/2'>
                 <Form {...form}>
                     <div className='p-5'>
                         <div className='text-center mb-5'>
@@ -116,24 +122,31 @@ const ProductFormRegister = () => {
                 </Form>
             </div>
             {/* List */}
-            <div className='p-5'>
+            <div className='lg:w-1/2 lg:max-h-dvh overflow-y-scroll p-5'>
                 {products.length > 0 ? (
                     <>
                         {products.map((product) => (
-                            <div key={product.id} className='border-b mb-2'>
+                            <div key={product.id} className='lg:max-h-48 border-b mb-2'>
                                 <div className='flex'>
-                                    <div className='w-1/4 border rounded bg-gray-100 p-3 me-2 mb-2'>
-                                        <img src={product?.image || 'https://placehold.co/600x600'} className='' alt='' />
-                                    </div>
-                                    <div>
-                                        <p className='font-semibold'>{product.title}</p>
-                                        <div className='text-sm'>
-                                            <span>Preço: </span>
-                                            <span>R$ {product.price}</span>
+                                    <div className="flex">
+                                        <div className='w-1/4 border rounded bg-gray-100 p-3 me-2 mb-2'>
+                                            <img src={product?.image || 'https://placehold.co/600x600'} className='' alt='' />
                                         </div>
                                         <div>
-                                            {product.description}
+                                            <p className='font-semibold'>{product.title}</p>
+                                            <div className='text-sm'>
+                                                <span>Preço: </span>
+                                                <span>R$ {(product.price).toFixed(2)}</span>
+                                            </div>
+                                            <div>
+                                                {product.description}
+                                            </div>
                                         </div>
+                                    </div>
+                                    <div>
+                                        <Button onClick={e => deleteProduct(product.id)} variant='secondary' className="p-3">
+                                            <Image src="/svg/trash.svg" className='w-full lg:w-1/2' width={16} height={16} alt=""/>
+                                        </Button>
                                     </div>
                                 </div>
                             </div>

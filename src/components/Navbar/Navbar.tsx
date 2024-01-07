@@ -17,7 +17,7 @@ import Link from 'next/link'
 
 const Navbar = () => {
     return (
-        <div className='flex justify-center'>
+        <div className='flex justify-center shadow'>
             <NavigationMenu>
                 <NavigationMenuList>
                     <NavigationMenuItem>
