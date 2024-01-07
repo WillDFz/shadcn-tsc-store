@@ -2,11 +2,11 @@
 
 import React, { useContext, useState } from 'react'
 import HamburgerMenu from 'hamburger-react';
-import Image from 'next/image';
 import Sidebar from './../Sidebar/Sidebar';
-import { Button } from '@/components/ui/button';
 import Cart from './../Cart/Cart';
 import { CartContext } from '../Contexts/CartContext';
+import Navbar from './../Navbar/Navbar';
+import SearchInput from '../SearchInput/SearchInput';
 
 const Header: React.FC = () => {
   const [isOpen, setOpen] = useState<boolean>(false);
@@ -33,10 +33,20 @@ const Header: React.FC = () => {
           <Cart />
         </div>
       </div>
+      
+      {/* Search */}
+      <div className='bg-black p-3'>
+        <SearchInput/>
+      </div>
+
+      {/* Navbar */}
+      <div className='hidden lg:block'>
+        <Navbar />
+      </div>
 
       {isOpen &&
         <>
-          <Sidebar setOpen={setOpen} />
+          <Sidebar setOpen={setOpen} isOpen={isOpen} />
           <div className='w-full bg-gray-600 h-screen opacity-50 fixed top-0 z-30'></div>
         </>
       }
