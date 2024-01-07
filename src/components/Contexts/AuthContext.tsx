@@ -1,9 +1,6 @@
 'use client'
 import { createContext, useContext, ReactNode, useState } from 'react';
-
-interface User {
-  username: string;
-}
+import User from '@/interfaces/User';
 
 interface AuthContextProps {
   user: User | null;

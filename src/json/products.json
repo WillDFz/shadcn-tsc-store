@@ -1,0 +1,72 @@
+[
+    {
+        "id": 1,
+        "title": "Smartphone",
+        "price": 999.99,
+        "description": "Um smartphone avançado com recursos incríveis.",
+        "image": "images/products/smartphone.png"
+    },
+    {
+        "id": 2,
+        "title": "Camiseta Casual",
+        "price": 29.99,
+        "description": "Uma camiseta confortável e estilosa para uso diário.",
+        "image": "images/products/shirt.png"
+    },
+    {
+        "id": 3,
+        "title": "Panela Antiaderente",
+        "price": 49.99,
+        "description": "Panela durável com revestimento antiaderente.",
+        "image": "images/products/pan.png"
+    },
+    {
+        "id": 4,
+        "title": "Fone de Ouvido Bluetooth",
+        "price": 79.99,
+        "description": "Fone de ouvido sem fio para uma experiência sonora imersiva.",
+        "image": "images/products/phone.png"
+    },
+    {
+        "id": 5,
+        "title": "Livro",
+        "price": 24.99,
+        "description": "Uma emocionante aventura em um mundo de ficção científica.",
+        "image": "images/products/book.png"
+    },
+    {
+        "id": 6,
+        "title": "Bola de Futebol",
+        "price": 19.99,
+        "description": "Bola resistente para partidas de futebol divertidas.",
+        "image": "images/products/ball.png"
+    },
+    {
+        "id": 7,
+        "title": "Mochila Escolar",
+        "price": 39.99,
+        "description": "Mochila espaçosa e confortável para o dia a dia escolar.",
+        "image": "images/products/bag.png"
+    },
+    {
+        "id": 8,
+        "title": "Cadeira",
+        "price": 149.99,
+        "description": "Cadeira almofadada casual.",
+        "image": "images/products/chair.png"
+    },
+    {
+        "id": 9,
+        "title": "Relógio de Pulso",
+        "price": 59.99,
+        "description": "Um elegante relógio para complementar seu estilo.",
+        "image": "images/products/clock.png"
+    },
+    {
+        "id": 10,
+        "title": "Máquina de Café Expresso",
+        "price": 299.99,
+        "description": "Preparações de café deliciosas com praticidade e rapidez.",
+        "image": "images/products/coffee.png"
+    }
+]
