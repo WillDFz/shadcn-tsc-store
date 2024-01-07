@@ -46,7 +46,8 @@ const ProductSwiper = () => {
                                 <div>
                                     <Button onClick={e => addToCart({
                                         id: product.id,
-                                        title: product.title, price: product.price,
+                                        title: product.title, 
+                                        price: product.price,
                                         image: product.image,
                                         quantity: 1
                                     })} 

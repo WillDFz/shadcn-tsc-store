@@ -17,7 +17,7 @@ const Sidebar: React.FC<SidebarProps> = ({ setOpen }) => {
                     </Link>
                 </div>
                 <div className='border-b border-slate-400 p-3'>
-                    <Link href="/">
+                    <Link href="/product/register">
                         Cadastro de Produtos
                     </Link>
                 </div>
