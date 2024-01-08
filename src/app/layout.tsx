@@ -4,7 +4,10 @@ import './globals.scss'
 import { AuthProvider } from './../components/Contexts/AuthContext';
 import { CartProvider } from '@/components/Contexts/CartContext';
 import { Toaster } from '@/components/ui/toaster';
+import Provider from './../components/Provider/Provider';
 const inter = Inter({ subsets: ['latin'] })
+
+
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -19,12 +22,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <AuthProvider>
-          <CartProvider>
-            {children}
-            <Toaster />
-          </CartProvider>
-        </AuthProvider>
+        <Provider>
+          <AuthProvider>
+            <CartProvider>
+              {children}
+              <Toaster />
+            </CartProvider>
+          </AuthProvider>
+        </Provider>
       </body>
     </html>
   )

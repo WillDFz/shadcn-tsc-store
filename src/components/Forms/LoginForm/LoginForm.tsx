@@ -15,6 +15,8 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useAuth } from "@/components/Contexts/AuthContext"
 
+import { useSession, signIn, signOut } from "next-auth/react"
+
 const formSchema = z.object({
     username: z.string().min(4),
     password: z.string().min(8),
@@ -23,6 +25,9 @@ const formSchema = z.object({
 
 const LoginForm: React.FC = () => {
     const { login } = useAuth()
+
+    const { data: session } = useSession()
+    console.log(session)
 
     const router = useRouter()
 
@@ -108,9 +113,9 @@ const LoginForm: React.FC = () => {
                         </div>
                         <div className='flex flex-col justify-center flex-wrap items-center mt-3 z-10'>
                             <div className='text-xs mb-3'>Ou entre com</div>
-                            <div className="w-12 h-12 flex items-center justify-center shadow-sm border rounded-full bg-gray-300">
-                                <Image src="/svg/googleIcon.svg" width={25} height={25} alt="" />
-                            </div>
+                            <Button onClick={(e) => signIn('github')} variant="outline" className="w-12 h-12 flex items-center justify-center shadow-sm rounded-full p-0">
+                                <Image src="/svg/github.svg" width={32} height={32} alt="" />
+                            </Button>
                         </div>
                     </div>
                 </div>

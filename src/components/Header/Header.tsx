@@ -52,7 +52,7 @@ const Header: React.FC = () => {
               </div>
 
             ) : (
-              <Link href="/auth/login" className='text-white text-xs'>Entrar</Link>
+              <Link href="/login" className='text-white text-xs'>Entrar</Link>
             )}
           </div>
           {/* Cart */}

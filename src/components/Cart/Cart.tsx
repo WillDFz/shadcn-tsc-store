@@ -32,7 +32,7 @@ const Cart = () => {
                     <Image src="/svg/bag.svg" width={20} height={20} alt='cart' />
                 </Button>
             </DrawerTrigger>
-            <DrawerContent>
+            <DrawerContent className='max-w-xl mx-auto'>
                 <DrawerHeader>
                     <DrawerTitle>Carrinho</DrawerTitle>
                 </DrawerHeader>
@@ -61,6 +61,9 @@ const Cart = () => {
                             </div>
                         </div>
                     ))}
+                    <div>
+                        <p>Total: R$ {cartItems.reduce((acc, curr) => acc + (curr.price * curr.quantity), 0)}</p>
+                    </div>
                 </div>
                 <DrawerFooter>
                     <Button>Finalizar compra</Button>
