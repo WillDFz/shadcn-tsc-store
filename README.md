@@ -1,8 +1,6 @@
-
-
 # Projeto de Loja
 
-Este repositório contém um projeto de loja online que consiste em três páginas principais: login, home e adicionar produtos. O objetivo deste projeto é criar uma experiência de compra simples e intuitiva para os usuários.
+Este repositório contém um projeto de loja online que consiste em três páginas principais: login, home e adicionar produtos. 
 
 ## Tecnologias Utilizadas
 
@@ -27,5 +25,7 @@ O projeto possui as seguintes funcionalidades:
 - **Versão Mobile**: Na versão mobile, para realizar o login, é necessário abrir o menu hamburger e clicar no botão "Login". Para realizar o logout, o botão estará no mesmo lugar onde estava o de login. A página de adicionar produtos também está disponível no menu hamburger.
 
 - **Versão Desktop**: Na versão desktop, o botão para entrar se encontra no header. O link para a página de adicionar produtos também está no header.
+
+O projeto também foi implantado na plataforma Vercel para facilitar o acesso e visualização do mesmo. Você pode acessar o projeto [aqui](https://shadcn-tsc-store.vercel.app.com/).
 
 
