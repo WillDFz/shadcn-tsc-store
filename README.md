@@ -1,36 +1,31 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
 
-First, run the development server:
+# Projeto de Loja
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Este repositório contém um projeto de loja online que consiste em três páginas principais: login, home e adicionar produtos. O objetivo deste projeto é criar uma experiência de compra simples e intuitiva para os usuários.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tecnologias Utilizadas
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+O projeto foi desenvolvido utilizando as seguintes tecnologias:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- React: para a construção da interface do usuário.
+- TypeScript: para adicionar tipagem estática ao código.
+- Shadcn: para estilização dos componentes.
+- NextAuth: para autenticação de usuários.
+- Tailwind: para estilização rápida e responsiva.
 
-## Learn More
+## Funcionalidades
 
-To learn more about Next.js, take a look at the following resources:
+O projeto possui as seguintes funcionalidades:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Login**: Página de login onde os usuários podem inserir suas credenciais para acessar a loja. Além disso, também é possível fazer login através da conta do GitHub.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- **Home**: Página inicial da loja que exibe um grid de produtos disponíveis para compra. Cada produto é exibido com uma imagem, nome, preço e um botão "Adicionar ao Carrinho". A página também possui banners promocionais.
 
-## Deploy on Vercel
+- **Adicionar Produtos**: Página onde os administradores da loja podem adicionar novos produtos ao catálogo. Os campos disponíveis para preenchimento incluem nome, descrição, preço e imagem do produto. Os produtos adicionados nesta página são apenas ilustrativos e não ficam salvos na loja, pois o sistema não possui um backend e banco de dados.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Versão Mobile**: Na versão mobile, para realizar o login, é necessário abrir o menu hamburger e clicar no botão "Login". Para realizar o logout, o botão estará no mesmo lugar onde estava o de login. A página de adicionar produtos também está disponível no menu hamburger.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- **Versão Desktop**: Na versão desktop, o botão para entrar se encontra no header. O link para a página de adicionar produtos também está no header.
+
+
