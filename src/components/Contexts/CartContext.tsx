@@ -28,7 +28,21 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     }
 
     const addToCart = (item: CartItem) => {
-        setCartItems([...cartItems, item]);
+        const existItem = cartItems.findIndex((cartItem) => cartItem.id === item.id)
+        if (existItem !== -1) {
+            const newCart = cartItems.map((cartItem) => {
+                if (cartItem.id === item.id) {
+                    return {
+                        ...cartItem,
+                        quantity: cartItem.quantity + 1
+                    }
+                }
+                return cartItem
+            })
+            setCartItems(newCart);
+        } else {
+            setCartItems([...cartItems, { ...item, quantity: 1 }]);
+        }
         addToCartToast()
     };
 
@@ -43,7 +57,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
         return total;
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         updateCartTotal(cartItems)
     }, [cartItems])
 
