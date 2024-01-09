@@ -19,10 +19,10 @@ import Image from 'next/image';
 
 const formSchema = z.object({
     id: z.number(),
-    title: z.string().min(5),
+    title: z.string().min(5, { message: 'O nome do produto deve ter no mínimo 5 caracteres' }),
     image: z.string(),
-    price: z.coerce.number().min(3),
-    description: z.string().min(10)
+    price: z.coerce.number().min(3, { message: 'O preço deve ter mais de 3 digitos' }),
+    description: z.string().min(10 ,{message: 'A descrição deve ter no mínimo 10 caracteres'})
 })
 
 const ProductFormRegister = () => {
@@ -40,7 +40,6 @@ const ProductFormRegister = () => {
     })
 
     const onSubmit = (values: z.infer<typeof formSchema>) => {
-        console.log(values)
         values.id = products.length + 1
         setProducts([...products, values])
     }
@@ -49,10 +48,6 @@ const ProductFormRegister = () => {
         const newProducts = products.filter(product => product.id !== id)
         setProducts(newProducts)
     }
-
-    useEffect(() => {
-        console.log(products)
-    }, [products])
 
     return (
         <div className='lg:container lg:flex'>

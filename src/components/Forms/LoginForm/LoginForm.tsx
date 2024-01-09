@@ -17,8 +17,8 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useSession, signIn, signOut } from "next-auth/react"
 
 const formSchema = z.object({
-    username: z.string().min(4),
-    password: z.string().min(8),
+    username: z.string().min(4,{message: 'O nome de usuário deve ter no mínimo 4 caracteres'}),
+    password: z.string().min(8 ,{message: 'A senha deve ter no mínimo 8 caracteres'}),
 })
 
 const LoginForm: React.FC = () => {
