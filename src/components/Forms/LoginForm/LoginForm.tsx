@@ -13,21 +13,15 @@ import { useRouter } from "next/navigation"
 import * as z from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useAuth } from "@/components/Contexts/AuthContext"
 
 import { useSession, signIn, signOut } from "next-auth/react"
 
 const formSchema = z.object({
     username: z.string().min(4),
     password: z.string().min(8),
-    role: z.string().min(1)
 })
 
 const LoginForm: React.FC = () => {
-    const { login } = useAuth()
-
-    const { data: session } = useSession()
-    console.log(session)
 
     const router = useRouter()
 
@@ -36,14 +30,24 @@ const LoginForm: React.FC = () => {
         defaultValues: {
             username: '',
             password: '',
-            role: ''
         }
     })
 
-    const onSubmit = (values: z.infer<typeof formSchema>) => {
-        console.log(values)
-        login(values);
-        router.push('/')
+    const onSubmit = async (values: z.infer<typeof formSchema>) => {
+        try {
+            const response = await signIn('credentials', {
+                username: values.username,
+                password: values.password,
+                callbackUrl: '/',
+            });
+            if (response?.error) {
+                console.error(response.error);
+            } else {
+                router.push('/');
+            }
+        } catch (error) {
+            console.error(error);
+        }
     }
 
 
@@ -65,7 +69,7 @@ const LoginForm: React.FC = () => {
                                             render={({ field }) => (
                                                 <FormItem>
                                                     <FormControl>
-                                                        <Input placeholder="Usuário, email ou telefone" {...field} />
+                                                        <Input placeholder="Usuário" {...field} />
                                                     </FormControl>
                                                     <FormMessage />
                                                 </FormItem>
@@ -77,27 +81,7 @@ const LoginForm: React.FC = () => {
                                             render={({ field }) => (
                                                 <FormItem>
                                                     <FormControl>
-                                                        <Input placeholder="Senha" {...field} />
-                                                    </FormControl>
-                                                    <FormMessage />
-                                                </FormItem>
-                                            )}
-                                        />
-                                        <FormField
-                                            control={form.control}
-                                            name="role"
-                                            render={({ field }) => (
-                                                <FormItem>
-                                                    <FormControl>
-                                                        <Select onValueChange={field.onChange}>
-                                                            <SelectTrigger className="w-[180px]">
-                                                                <SelectValue placeholder="Cargo" />
-                                                            </SelectTrigger>
-                                                            <SelectContent>
-                                                                <SelectItem value="Cliente">Cliente</SelectItem>
-                                                                <SelectItem value="Lojista">Lojista</SelectItem>
-                                                            </SelectContent>
-                                                        </Select>
+                                                        <Input placeholder="Senha" type="password" {...field} />
                                                     </FormControl>
                                                     <FormMessage />
                                                 </FormItem>
@@ -113,7 +97,7 @@ const LoginForm: React.FC = () => {
                         </div>
                         <div className='flex flex-col justify-center flex-wrap items-center mt-3 z-10'>
                             <div className='text-xs mb-3'>Ou entre com</div>
-                            <Button onClick={(e) => signIn('github')} variant="outline" className="w-12 h-12 flex items-center justify-center shadow-sm rounded-full p-0">
+                            <Button onClick={(e) => signIn('github', { callbackUrl: '/' })} variant="outline" className="w-12 h-12 flex items-center justify-center shadow-sm rounded-full p-0">
                                 <Image src="/svg/github.svg" width={32} height={32} alt="" />
                             </Button>
                         </div>

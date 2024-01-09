@@ -7,14 +7,16 @@ import Cart from './../Cart/Cart';
 import { CartContext } from '../Contexts/CartContext';
 import Navbar from './../Navbar/Navbar';
 import SearchInput from '../SearchInput/SearchInput';
-import { useAuth } from '@/components/Contexts/AuthContext';
 import Link from 'next/link';
 import { Button } from '../ui/button';
+import { signOut, useSession } from 'next-auth/react';
+
 
 const Header: React.FC = () => {
   const [isOpen, setOpen] = useState<boolean>(false);
 
-  const { user, logout } = useAuth()
+
+  const { data: session } = useSession()
 
   const cartContext = useContext(CartContext)
 
@@ -23,6 +25,8 @@ const Header: React.FC = () => {
   }
 
   const { cartItems } = cartContext
+
+  console.log(session)
 
   return (
     <header>
@@ -44,11 +48,11 @@ const Header: React.FC = () => {
           {/* Account */}
           <div className="hidden lg:flex flex-col items-center justify-center pt-5">
             <img src="/svg/user.svg" alt="" className='w-6 h-6' />
-            {user ? (
+            {session ? (
               <div className='text-white text-xs'>
-                <Link href="#" className=' '>{user.username}</Link> 
+                <Link href="#" className=' '>{session?.user?.name}</Link>
                 <span> | </span>
-                <Button className='h-0 hover:text-white p-0' variant="ghost" onClick={e => logout()}>sair</Button>
+                <Button className='h-0 hover:text-white p-0' variant="ghost" onClick={e => signOut({ callbackUrl: '/login' })}>sair</Button>
               </div>
 
             ) : (
