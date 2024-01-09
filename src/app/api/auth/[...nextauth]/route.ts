@@ -10,8 +10,8 @@ const handler = NextAuth({
             name: 'Credentials',
           
             credentials: {
-                username: { label: 'Username', type: 'text' },
-                password: { label: 'Password', type: 'password' },
+                username: { label: 'Usuário', type: 'text' },
+                password: { label: 'Senha', type: 'password' },
             },
             async authorize(credentials, req) {
                 const userId = uuidv4();

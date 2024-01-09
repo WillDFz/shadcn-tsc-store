@@ -26,7 +26,6 @@ const Header: React.FC = () => {
 
   const { cartItems } = cartContext
 
-  console.log(session)
 
   return (
     <header>

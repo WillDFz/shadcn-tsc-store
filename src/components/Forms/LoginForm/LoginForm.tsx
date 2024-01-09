@@ -88,7 +88,7 @@ const LoginForm: React.FC = () => {
                                             )}
                                         />
                                         <div className='text-right text-sm'>
-                                            <Link href="/auth/reset" className="text-blue-600 hover:underline">Esqueceu a senha?</Link>
+                                            <Link href="/reset" className="text-blue-600 hover:underline">Esqueceu a senha?</Link>
                                         </div>
                                         <Button className='w-full' type="submit">Entrar</Button>
                                     </form>
